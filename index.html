@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sandhu Wedding Choban — trusted matrimonial matchmaking, established in 2018.">
+  <title>Sandhu Wedding Choban | Find Your Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#251d20; --muted:#6d6265; --cream:#fbf7f2; --paper:#fffdf9;
+      --rose:#9f3f52; --rose-dark:#762c3c; --gold:#c79b5b; --line:#eadfd8;
+      --shadow:0 22px 60px rgba(52,29,31,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .container{width:min(1160px,92%);margin:auto}
+    .topbar{background:#2c2023;color:#fff;font-size:13px;padding:8px 0;text-align:center;letter-spacing:.3px}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(234,223,216,.8)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:"Playfair Display",serif;font-weight:700;font-size:21px}
+    .brand-mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--rose);color:#fff;font-family:"Playfair Display",serif;font-size:18px;box-shadow:0 8px 18px rgba(159,63,82,.25)}
+    .navlinks{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600;color:#50464a}
+    .navlinks a:hover{color:var(--rose)}
+    .nav-cta,.primary{background:var(--rose);color:#fff;border:0;border-radius:999px;padding:12px 20px;font-weight:700;cursor:pointer;transition:.25s}
+    .nav-cta:hover,.primary:hover{background:var(--rose-dark);transform:translateY(-2px)}
+    .menu{display:none;border:0;background:none;font-size:26px;cursor:pointer}
+
+    .hero{min-height:690px;position:relative;display:flex;align-items:center;overflow:hidden;background:
+      linear-gradient(90deg,rgba(28,16,19,.92) 0%,rgba(28,16,19,.68) 42%,rgba(28,16,19,.18) 76%),
+      url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1900&q=85") center/cover}
+    .hero:after{content:"";position:absolute;inset:auto -10% -130px;height:260px;background:var(--cream);border-radius:50% 50% 0 0/100% 100% 0 0}
+    .hero-content{position:relative;z-index:2;color:#fff;max-width:680px;padding:85px 0 120px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#f0d3aa;text-transform:uppercase;letter-spacing:2.2px;font-size:12px;font-weight:700}
+    .eyebrow:before{content:"";width:32px;height:1px;background:currentColor}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.15;margin:0}
+    h1{font-size:clamp(48px,7vw,78px);margin:18px 0}
+    .hero p{font-size:18px;color:#f5e9e4;max-width:600px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .secondary{border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:12px 20px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px)}
+    .secondary:hover{background:#fff;color:var(--ink)}
+    .trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:36px;color:#eadbd6;font-size:13px}
+    .trust span{display:flex;align-items:center;gap:8px}
+    .dot{width:7px;height:7px;background:#e6bc7d;border-radius:50%}
+
+    section{padding:90px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 45px}
+    .section-head .eyebrow{color:var(--rose)}
+    .section-head h2{font-size:clamp(34px,4.5vw,52px);margin:12px 0}
+    .section-head p{color:var(--muted);margin:0}
+
+    .search-wrap{margin-top:-70px;position:relative;z-index:5}
+    .search-card{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
+    .search-title{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+    .search-title h3{font-size:26px}
+    .search-title span{color:var(--muted);font-size:13px}
+    .filters{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:12px}
+    .field{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px 13px}
+    .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#8b7d80;font-weight:700}
+    .field input,.field select{width:100%;border:0;outline:0;background:transparent;color:var(--ink);padding-top:5px}
+    .search-btn{border:0;border-radius:14px;background:var(--ink);color:#fff;padding:0 22px;font-weight:700;cursor:pointer}
+    .search-btn:hover{background:var(--rose)}
+
+    .choices{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .choice{min-height:350px;border-radius:var(--radius);overflow:hidden;position:relative;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:28px;color:#fff}
+    .choice:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,15,17,.85),rgba(24,15,17,.05) 65%)}
+    .choice-content{position:relative;z-index:1}
+    .choice h3{font-size:38px}
+    .choice p{max-width:430px;color:#f4e9e6}
+    .outline{display:inline-block;border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:10px 17px;font-weight:700;font-size:14px}
+    .choice-bride{background-image:url("https://images.unsplash.com/photo-1597157639073-69284f5b7f9b?auto=format&fit=crop&w=1100&q=85")}
+    .choice-groom{background-image:url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1100&q=85")}
+
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .step{background:#fff;border:1px solid var(--line);padding:28px;border-radius:20px;position:relative}
+    .step-num{font-family:"Playfair Display",serif;font-size:44px;color:#d9c0aa}
+    .step h3{font-size:23px;margin:12px 0 8px}
+    .step p{color:var(--muted);font-size:14px;margin:0}
+
+    .why{background:#2b2023;color:#fff;position:relative;overflow:hidden}
+    .why:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-140px;top:-180px}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative}
+    .why h2{font-size:clamp(38px,5vw,56px)}
+    .why p{color:#d9cbca}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .feature{border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:18px;background:rgba(255,255,255,.04)}
+    .icon{width:42px;height:42px;border-radius:12px;background:rgba(214,177,121,.13);color:#e6bd83;display:grid;place-items:center;margin-bottom:14px}
+    .feature h3{font-size:21px}
+    .feature p{font-size:13px;margin-bottom:0}
+
+    .ceo-grid{display:grid;grid-template-columns:380px 1fr;gap:70px;align-items:center}
+    .portrait{background:#eadfd7;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);position:relative}
+    .portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top}
+    .portrait-caption{padding:18px 20px;background:#fff}
+    .portrait-caption small{color:var(--rose);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+    .portrait-caption strong{display:block;font-family:"Playfair Display",serif;font-size:22px;margin-top:3px}
+    .ceo-copy .eyebrow{color:var(--rose)}
+    .ceo-copy h2{font-size:clamp(38px,5vw,58px);margin:12px 0 20px}
+    .ceo-copy p{color:var(--muted)}
+    .signature{font-family:"Playfair Display",serif;font-size:25px;margin-top:25px;color:var(--rose)}
+
+    .cta{padding-top:30px}
+    .cta-box{background:linear-gradient(135deg,#8f3548,#4b252d);color:#fff;border-radius:30px;padding:60px;display:flex;justify-content:space-between;align-items:center;gap:30px;overflow:hidden;position:relative}
+    .cta-box:after{content:"♥";position:absolute;right:40px;bottom:-80px;font-size:250px;color:rgba(255,255,255,.05)}
+    .cta-box h2{font-size:clamp(34px,4vw,50px)}
+    .cta-box p{color:#ead9d9;max-width:600px}
+    .cta-box .primary{background:#fff;color:var(--rose-dark);position:relative;z-index:1;white-space:nowrap}
+
+    footer{background:#1e1719;color:#fff;margin-top:90px;padding:55px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px}
+    .footer-brand{font-family:"Playfair Display",serif;font-size:25px}
+    footer p,footer a{color:#bcaeb0;font-size:14px}
+    footer h4{margin:0 0 14px;font-family:"Playfair Display",serif;font-size:18px}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:35px;padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#8f8183;font-size:12px}
+
+    .modal{position:fixed;inset:0;background:rgba(20,12,14,.72);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+    .modal.show{display:flex}
+    .modal-card{background:#fffdf9;border-radius:24px;padding:30px;width:min(560px,100%);box-shadow:0 30px 90px rgba(0,0,0,.3);position:relative}
+    .close{position:absolute;right:18px;top:15px;border:0;background:none;font-size:25px;cursor:pointer}
+    .modal-card h2{font-size:34px;margin-bottom:6px}
+    .modal-card p{color:var(--muted)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .full{grid-column:1/-1}
+    .form-grid input,.form-grid select{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;outline:0;background:#fff}
+    .form-grid button{grid-column:1/-1;padding:14px;border:0;border-radius:12px;background:var(--rose);color:#fff;font-weight:700;cursor:pointer}
+    .notice{display:none;margin-top:12px;background:#f3e8df;padding:12px;border-radius:10px;color:#5b4246;font-size:13px}
+
+    @media(max-width:900px){
+      .navlinks{display:none}.menu{display:block}
+      .navlinks.open{position:absolute;display:flex;flex-direction:column;align-items:flex-start;left:4%;right:4%;top:70px;padding:20px;background:#fffdf9;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+      .filters{grid-template-columns:1fr 1fr}.search-btn{height:48px}
+      .steps{grid-template-columns:1fr 1fr}.why-grid,.ceo-grid{grid-template-columns:1fr}
+      .ceo-grid{gap:35px}.portrait{max-width:420px;margin:auto}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .nav-cta{display:none}.hero{min-height:650px}
+      .hero-content{padding:70px 0 100px}.hero p{font-size:16px}
+      .filters,.choices,.steps,.features,.form-grid,.footer-grid{grid-template-columns:1fr}
+      .search-wrap{margin-top:-45px}.search-card{padding:20px}
+      .search-title{display:block}.search-title span{display:block;margin-top:4px}
+      .choice{min-height:320px}.choice h3{font-size:32px}
+      .why-grid{gap:35px}.cta-box{padding:38px 25px;display:block}
+      .cta-box .primary{margin-top:15px}.footer-bottom{display:block}
+      .footer-bottom span{display:block;margin-top:8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Established 2018 · Matrimonial matchmaking with a family-first approach</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home"><span class="brand-mark">S</span><span>Sandhu Wedding Choban</span></a>
+      <nav class="navlinks" id="navlinks">
+        <a href="#matches">Find a Match</a>
+        <a href="#how">How It Works</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-cta" onclick="openModal()">Register Profile</button>
+      <button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow">Since 2018 · Meaningful Connections</span>
+        <h1>Where families meet, and futures begin.</h1>
+        <p>A respectful matrimonial service designed to help individuals and families discover compatible matches with clarity, care and trust.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#matches">Find Your Match →</a>
+          <button class="secondary" onclick="openModal()">Register Your Profile</button>
+        </div>
+        <div class="trust">
+          <span><i class="dot"></i> Family-focused matchmaking</span>
+          <span><i class="dot"></i> Respectful & private</span>
+          <span><i class="dot"></i> Established 2018</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container search-wrap" id="matches">
+      <div class="search-card">
+        <div class="search-title">
+          <h3>Start your search</h3>
+          <span>Use the filters to describe the kind of match you are looking for.</span>
+        </div>
+        <form class="filters" onsubmit="searchMatches(event)">
+          <div class="field"><label>Looking for</label><select><option>Bride</option><option>Groom</option></select></div>
+          <div class="field"><label>Age</label><input type="text" placeholder="e.g. 24–30"></div>
+          <div class="field"><label>Location</label><input type="text" placeholder="City / Region"></div>
+          <div class="field"><label>Profession</label><input type="text" placeholder="Any profession"></div>
+          <button class="search-btn" type="submit">Search</button>
+        </form>
+        <div id="searchNotice" class="notice"></div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Explore</span>
+          <h2>Begin with the kind of connection you seek.</h2>
+          <p>Every family has different priorities. Start your search and refine it around age, location, education, profession and personal preferences.</p>
+        </div>
+        <div class="choices">
+          <article class="choice choice-bride">
+            <div class="choice-content">
+              <h3>Find a Bride</h3>
+              <p>Explore profiles thoughtfully and connect with families when there is genuine interest.</p>
+              <a class="outline" href="#contact">Explore Bride Matches →</a>
+            </div>
+          </article>
+          <article class="choice choice-groom">
+            <div class="choice-content">
+              <h3>Find a Groom</h3>
+              <p>Discover suitable profiles based on the qualities and preferences that matter to you.</p>
+              <a class="outline" href="#contact">Explore Groom Matches →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" style="padding-top:30px">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Simple process</span>
+          <h2>Four steps toward a meaningful introduction.</h2>
+          <p>A clear, family-friendly journey from creating a profile to making a genuine connection.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><h3>Create your profile</h3><p>Share the essential information that helps others understand who you are.</p></div>
+          <div class="step"><div class="step-num">02</div><h3>Set preferences</h3><p>Choose the age, location, education, profession and other preferences important to you.</p></div>
+          <div class="step"><div class="step-num">03</div><h3>Discover matches</h3><p>Review suitable profiles and focus on connections that feel compatible.</p></div>
+          <div class="step"><div class="step-num">04</div><h3>Connect with families</h3><p>Move forward respectfully when both sides are interested in getting to know each other.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="container why-grid">
+        <div>
+          <span class="eyebrow" style="color:#e7bc82">Our approach</span>
+          <h2 style="margin-top:14px">A more thoughtful way to meet.</h2>
+          <p>Sandhu Wedding Choban is built around the idea that matrimonial introductions should be respectful, transparent and centred on compatibility and family values.</p>
+        </div>
+        <div class="features">
+          <div class="feature"><div class="icon">♡</div><h3>Respect first</h3><p>We keep the experience focused on dignity, communication and genuine interest.</p></div>
+          <div class="feature"><div class="icon">⌕</div><h3>Focused search</h3><p>Useful filters help narrow your search instead of overwhelming you with profiles.</p></div>
+          <div class="feature"><div class="icon">◇</div><h3>Family friendly</h3><p>A process designed to make introductions comfortable for individuals and families.</p></div>
+          <div class="feature"><div class="icon">✓</div><h3>Clear journey</h3><p>From profile creation to contact, each step is simple and easy to understand.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container ceo-grid">
+        <div class="portrait">
+          <img src="assets/ceo-dilpreet-singh-sandhu.jpeg" alt="Dilpreet Singh Sandhu, CEO of Sandhu Wedding Choban">
+          <div class="portrait-caption"><small>CEO & Founder</small><strong>Dilpreet Singh Sandhu</strong></div>
+        </div>
+        <div class="ceo-copy">
+          <span class="eyebrow">Leadership</span>
+          <h2>Built with a personal commitment to meaningful introductions.</h2>
+          <p>Sandhu Wedding Choban was established in 2018 with a focus on matrimonial matchmaking and family-oriented introductions.</p>
+          <p>Under the leadership of <strong>Dilpreet Singh Sandhu</strong>, the service aims to keep the matchmaking journey professional, respectful and centred on finding suitable connections.</p>
+          <div class="signature">Dilpreet Singh Sandhu</div>
+          <p style="font-size:13px;margin-top:0">CEO & Founder · Sandhu Wedding Choban</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <span class="eyebrow" style="color:#e8bd84">Take the first step</span>
+            <h2 style="margin-top:12px">Ready to begin your search?</h2>
+            <p>Create a profile or contact the team to discuss what you are looking for. Contact details can be added here when officially provided.</p>
+          </div>
+          <button class="primary" onclick="openModal()">Register Your Profile →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">Sandhu Wedding Choban</div>
+        <p>Meaningful matrimonial connections since 2018.</p>
+        <p>Professional, respectful and family-focused matchmaking.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="#matches">Find a Match</a></p>
+        <p><a href="#how">How It Works</a></p>
+        <p><a href="#about">About the Founder</a></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Contact details to be added.</p>
+        <p>Email / phone / office address — placeholder</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2018–2026 Sandhu Wedding Choban. All rights reserved.</span>
+      <span>Privacy · Terms · Responsible matchmaking</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+    <div class="modal-card">
+      <button class="close" onclick="closeModal()" aria-label="Close">×</button>
+      <h2 id="registerTitle">Create your profile</h2>
+      <p>Enter your basic details. This demo form does not send or store data until a real backend is connected.</p>
+      <form class="form-grid" onsubmit="submitProfile(event)">
+        <input required placeholder="Full name">
+        <select required><option value="">Looking for...</option><option>Bride</option><option>Groom</option></select>
+        <input placeholder="Age">
+        <input placeholder="Location">
+        <input placeholder="Education" class="full">
+        <input placeholder="Profession" class="full">
+        <button type="submit">Submit Profile Request</button>
+      </form>
+      <div id="formNotice" class="notice"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal=document.getElementById("registerModal");
+    function openModal(){modal.classList.add("show");document.body.style.overflow="hidden"}
+    function closeModal(){modal.classList.remove("show");document.body.style.overflow=""}
+    modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+    function toggleMenu(){document.getElementById("navlinks").classList.toggle("open")}
+    document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("open")));
+    function searchMatches(e){
+      e.preventDefault();
+      const n=document.getElementById("searchNotice");
+      n.style.display="block";
+      n.textContent="Search interface ready. Connect your approved profile database/API here to display live matches.";
+    }
+    function submitProfile(e){
+      e.preventDefault();
+      const n=document.getElementById("formNotice");
+      n.style.display="block";
+      n.textContent="Thank you. This demo form is ready for a secure backend or email service to be connected.";
+    }
+  </script>
+</body>
+</html>
